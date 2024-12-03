@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{
+    //[SerializeField] private float speed = 5f;
+    [SerializeField] private int enemyHP = 5;
+    [SerializeField] private float moveSpeed = 2f;
+    private Transform[] path;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        if (other.CompareTag(GameConstant.BULLET_TAG))
+        {
+            enemyHP -= 1;
+            if(enemyHP <= 0)
+            {
+                EnemyRecycle();
+            }
+        }
+    }
+
+    public void EnemyInit(Vector3 direction)
+    {
+        gameObject.SetActive(true);
+    }
+    public void EnemyRecycle()
+    {
+        gameObject.SetActive(false);
+    }
+}
