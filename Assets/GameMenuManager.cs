@@ -9,9 +9,10 @@ using UnityEngine.UI;
 public class GameMenuManager : MonoBehaviour
 {
     // References to UI panels
-    public GameObject gameMenuContent;
+
+    public GameObject IngameMenuContent;
     public GameObject continueMenuUI;
-    public GameObject restartMenuUI;
+    public GameObject mainMenuMenuUI;
     public GameObject settingsMenuUI;
     public GameObject exitMenuUI;
 
@@ -31,7 +32,7 @@ public class GameMenuManager : MonoBehaviour
 
         // Set button listeners for each action
         buttonContinue.onClick.AddListener(Continue);
-        buttonRestart.onClick.AddListener(Restart);
+        buttonRestart.onClick.AddListener(Mainmenu);
         buttonSettings.onClick.AddListener(OpenSettings);
         buttonExit.onClick.AddListener(ExitGame);
     }
@@ -54,9 +55,7 @@ public class GameMenuManager : MonoBehaviour
     {
         isPaused = true;
         HideAllMenu(true);
-        //ShowMenu(backGround,continueMenuUI, restartMenuUI, settingsMenuUI, exitMenuUI);
         Time.timeScale = 0f;  // Pause the game
-        Debug.Log("Game Paused");
     }
 
     // Function to resume the game
@@ -65,18 +64,16 @@ public class GameMenuManager : MonoBehaviour
         isPaused = false;
         HideAllMenu(false);
         Time.timeScale = 1f;  // Resume the game
-        Debug.Log("Game Resumed");
     }
-    public void Restart()
+    public void Mainmenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainMenu");
     }
 
     // Function to open the settings menu
     public void OpenSettings()
     {
         HideAllMenu(false);
-        //settingsMenuUI.SetActive(true);
     }
 
     // Function to open the exit menu
@@ -93,18 +90,11 @@ public class GameMenuManager : MonoBehaviour
 
     private void HideAllMenu(bool state)
     {
-        gameMenuContent.SetActive(state);
-        Debug.Log("call hideAllMenu" + state);
+        IngameMenuContent.SetActive(state);
         if (state == false)
         { EventSystem.current.SetSelectedGameObject(null); }
         
     }
 
-    //private void ShowMenu(params GameObject[] menus)
-    //{
-    //    foreach (var menu in menus)
-    //    {
-    //        menu.SetActive(true);
-    //    }
-    //}
+   
 }

@@ -11,17 +11,18 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private float fireInterval = 2f;
     private float fireTimer = 0f;
     private int bulletCount =1;
-    FireEffectSpawner FireEffectSpawner;
 
     private void Awake()
     {
         if (instance == null)
             instance = this;
+
     }
     private void Start()
     {
-        FireEffectSpawner = GetComponent<FireEffectSpawner>();
+
     }
+    
     private void Update()
     {
         if (playerTransform == null)
@@ -33,14 +34,15 @@ public class BulletSpawner : MonoBehaviour
         fireTimer += Time.deltaTime;
         if (fireTimer >= fireInterval)
         {
-            FireEffectSpawner.FireFXSpawn();
+          
             FirePowerUp();
             fireTimer = 0f;  // Reset the timer
         }
     }
-
+    
     void FirePowerUp()
     {
+
         if (bulletCount == 1)
         {
             BulletLv1();
@@ -49,7 +51,7 @@ public class BulletSpawner : MonoBehaviour
         {
             BulletLv2();
         }
-        else
+        else 
         {
             BulletLv3();
         }
@@ -61,6 +63,7 @@ public class BulletSpawner : MonoBehaviour
         Vector3 direction = Vector3.up;
         Vector3 position = playerTransform.position + direction;
         SpawnBulletPosition(direction, position);
+        BulletFireFX();
 
     }
     void BulletLv2()
@@ -70,6 +73,8 @@ public class BulletSpawner : MonoBehaviour
         Vector3 position2 = playerTransform.position + new Vector3(0.2f, 0, 0) + direction;
         SpawnBulletPosition(direction,position1);
         SpawnBulletPosition(direction,position2);
+        BulletFireFX();
+
     }
     void BulletLv3()
     {
@@ -87,6 +92,8 @@ public class BulletSpawner : MonoBehaviour
         SpawnBulletPosition(direction1,Position1);
         SpawnBulletPosition(direction2, Position2);
         SpawnBulletPosition(direction3, Position3);
+        BulletFireFX();
+
 
     }
     void SpawnBulletPosition(Vector3 direction, Vector3 potition)
@@ -99,8 +106,10 @@ public class BulletSpawner : MonoBehaviour
             Recycle(bulletGo);
         });
         bullet.Fire(direction);
+
+
     }
-   
+
     public void BulletSpeedUp(int amount)
     {
         speed += amount;
@@ -124,6 +133,11 @@ public class BulletSpawner : MonoBehaviour
     {
         bulletCount += amount;
     }
-    
 
+    public void BulletFireFX()
+    {
+
+        FireEffectSpawner.Instance.FireFXSpawner();
+
+    }
 }
