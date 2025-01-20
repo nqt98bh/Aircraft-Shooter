@@ -8,8 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner instance;
     public PoolManager enemyPool;
     public EnemyBulletSpawner enemyBullet;
-    private float timer;
-    [SerializeField] private float spawnInterval = 1.0f;
+    private float timer =0f;
+    [SerializeField] private float spawnInterval = 5.0f;
     [SerializeField] private float fireInterval;
     [SerializeField] float verticalOffset = 4f; // Offset in the vertical direction (Y-axis)
     [SerializeField] float verticalSpacing = 3f;
@@ -28,8 +28,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        
-        if (CheckIfWaveCompleted()&& !isWaveInProgress)
+        if (CheckIfWaveCompleted()&& !isWaveInProgress )
         {
           isWaveInProgress = true;
           SpawnNextWave();
@@ -39,15 +38,21 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnNextWave()
     {
+        
+
         if (wave < enemiesPerWave.Length)
         {
-            wave++;
-            if (wave >= enemiesPerWave.Length)
+            timer += Time.deltaTime;
+            if (timer > spawnInterval)
             {
-                wave = enemiesPerWave.Length - 1;
+                wave++;
+                if (wave >= enemiesPerWave.Length)
+                {
+                    wave = enemiesPerWave.Length - 1;
+                }
+                StartCoroutine(SpawnEnemy());
+                timer =0f;
             }
-            StartCoroutine(SpawnEnemy());
-
         }
 
 
@@ -72,6 +77,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
     
+
     void SpawnEnemyAtPosition(Vector3 spawnPosition)
     {
         GameObject enemyGo = enemyPool.GetObject(spawnPosition, Quaternion.identity);

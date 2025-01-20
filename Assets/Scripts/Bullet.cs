@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public static Bullet instance;  
     private Vector3 direction;
     Action RecycleAction;
+    //public FireEffectSpawner fireEffectSpawner;
     void Update()
     {
       
@@ -33,6 +34,8 @@ public class Bullet : MonoBehaviour
         bulletAudio.Play();
     }
 
+  
+
     public void Fire(Vector3 direction)
     {
         this.direction = direction;
@@ -43,6 +46,8 @@ public class Bullet : MonoBehaviour
     {
         RecycleAction = _recycleAction;
         BulletFireAudio();
+        
+      
     }
  
 
