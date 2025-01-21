@@ -17,15 +17,9 @@ public class PlayerController : MonoBehaviour
     Camera mainCamera;
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       
+        instance = this;
+        
         mainCamera = Camera.main;
     }
     private void Start()

@@ -48,7 +48,8 @@ public class EnemySpawner : MonoBehaviour
                 wave++;
                 if (wave >= enemiesPerWave.Length)
                 {
-                    wave = enemiesPerWave.Length - 1;
+                    //wave = enemiesPerWave.Length - 1;
+                    BossSpawn();
                 }
                 StartCoroutine(SpawnEnemy());
                 timer =0f;
@@ -77,7 +78,10 @@ public class EnemySpawner : MonoBehaviour
 
     }
     
-
+    public void BossSpawn()
+    {
+        BossSpawner.Instance.SpawnBoss();
+    }
     void SpawnEnemyAtPosition(Vector3 spawnPosition)
     {
         GameObject enemyGo = enemyPool.GetObject(spawnPosition, Quaternion.identity);

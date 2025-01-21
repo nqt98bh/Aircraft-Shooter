@@ -15,9 +15,9 @@ public class BossSpawner : MonoBehaviour
         }
     }
 
-    void SpawnBoss()
+    public void SpawnBoss()
     {
-        Vector3 spawnPos = transform.position;
+        Vector3 spawnPos = new Vector3 (0,2.3f,0);
         Instantiate(bossPrefab, spawnPos, Quaternion.identity);
     }
 }

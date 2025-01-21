@@ -18,15 +18,10 @@ public class GameController : MonoBehaviour
     public PlayerController PlayerController => playerController;
     private void Awake()
     {
-        if(instance == null)
-        {
+        
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+           
+      
     }
   
 }

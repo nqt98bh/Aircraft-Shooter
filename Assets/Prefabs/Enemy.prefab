@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae754a647e61ee149bd2f42099b0062e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: 5
+  enemyHP: 1
   moveSpeed: 2
   animator: {fileID: -947053190133237291}
 --- !u!61 &-2926598494660956964

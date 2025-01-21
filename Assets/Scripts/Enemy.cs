@@ -23,21 +23,23 @@ public class Enemy : MonoBehaviour
         
         if (other.CompareTag(GameConstant.BULLET_TAG))
         {
-            OnHitted();
+            IsHitted();
             enemyHP -= 1;
             if(enemyHP <= 0)
             {
-                //OnDead();
-                EnemyRecycle();
+                OnDead();
                 ScoreManager.Instance.AddScore(100);
 
+
+                EnemyRecycle();
+
             }
-        
-       
+
+
         }
        
     }
-    public void OnHitted()
+    public void IsHitted()
     {
 
         animator.SetTrigger("IsHitted");
@@ -47,6 +49,8 @@ public class Enemy : MonoBehaviour
     {
         SmokeSpawner.Instance.SmokeFXSpawner();
     }
+  
+
 
     public void EnemyInit(Vector3 direction)
     {

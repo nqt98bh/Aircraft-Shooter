@@ -9,6 +9,7 @@ public class FireEffectSpawner : MonoBehaviour
     private float timer =0;
     [SerializeField] float recycleTime = 0.05f;
     public Transform playerTransform;
+   
     private void Awake()
     {
         if(Instance == null)
@@ -37,6 +38,7 @@ public class FireEffectSpawner : MonoBehaviour
 
         Vector3 spawnPosition = playerTransform.transform.position + new Vector3(0, 1, 10);
         GameObject fireFXGo = FireFXPool.GetObject(spawnPosition, Quaternion.identity);
+        fireFXGo.transform.parent = playerTransform;
         fireFXGo.transform.position = spawnPosition;
         Effect fireFX = fireFXGo.GetComponent<Effect>();
         fireFX.FXInit();
