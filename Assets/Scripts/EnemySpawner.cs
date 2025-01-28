@@ -14,16 +14,20 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float verticalOffset = 4f; // Offset in the vertical direction (Y-axis)
     [SerializeField] float verticalSpacing = 3f;
     [SerializeField] int numberOfRows = 2;
-    [SerializeField] int wave = 0;
-    [SerializeField] private int[] enemiesPerWave = { 8, 12, 16 };
+    [SerializeField] public int wave = 0;
+    [SerializeField] int[] enemiesPerWave = { 8, 12, 16 };
     private bool isWaveInProgress = false;
     Transform[] path;
 
     private void Start()
     {
         instance = this;
-
+        if (GameMenuManager.Instance.isContinue)
+        {
+            wave = PlayerData.GetCurrentLevelPlayer()-1;
+        }
         StartCoroutine(SpawnEnemy());
+        
         
     }
     private void Update()

@@ -18,11 +18,7 @@ public class BulletSpawner : MonoBehaviour
             instance = this;
 
     }
-    private void Start()
-    {
-
-    }
-    
+  
     private void Update()
     {
         if (playerTransform == null)

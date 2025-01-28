@@ -11,32 +11,35 @@ public class SmokeSpawner : MonoBehaviour
  
     private void Awake()
     {
-       
             Instance = this;
-     
     }
-    public void SmokeFXSpawner()
+    //public void SmokeFXSpawner()
+    //{
+    //    SmokeFXSpawn();
+    //    timer += Time.deltaTime;
+    //    if (timer >= recycleTime)
+    //    {
+    //        RecycleFX(gameObject);
+    //        timer = 0;
+    //    }
+
+    //}
+    public void SmokeFXSpawn(Transform position)
     {
-        SmokeFXSpawn();
-        timer += Time.deltaTime;
+    
+
+            Vector3 spawnPosition = position.transform.position;
+            GameObject smokeFXGo = FireFXPool.GetObject(spawnPosition, Quaternion.identity);
+            smokeFXGo.transform.position = spawnPosition;
+            Effect smokeFX = smokeFXGo.GetComponent<Effect>();
+            smokeFX.FXInit();
+         timer += Time.deltaTime;
         if (timer >= recycleTime)
         {
             RecycleFX(gameObject);
             timer = 0;
         }
 
-    }
-    public void SmokeFXSpawn()
-    {
-        foreach (GameObject enemy in GameController.instance.EnemySpawner.enemyPool.GetPoolList())
-        {
-
-            Vector3 spawnPosition = enemy.transform.position;
-            GameObject smokeFXGo = FireFXPool.GetObject(spawnPosition, Quaternion.identity);
-            smokeFXGo.transform.position = spawnPosition;
-            Effect smokeFX = smokeFXGo.GetComponent<Effect>();
-            smokeFX.FXInit();
-        }
     }
     public void RecycleFX(GameObject fireFX)
     {

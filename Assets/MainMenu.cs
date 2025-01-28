@@ -8,43 +8,86 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+  
+
     public GameObject mainMenuContent;
     public GameObject continueMenuUI;
-    public GameObject restartMenuUI;
+    public GameObject newGameMenuUI;
+    public GameObject mainMenuUI;
     public GameObject settingsMenuUI;
     public GameObject exitMenuUI;
 
     // The buttons
     public Button buttonContinue;
-    public Button buttonRestart;
+    public Button buttonNewGame;
+    public Button buttonMainMenu;
     public Button buttonSettings;
     public Button buttonExit;
 
-    // Keep track of the game state (paused or not)
+    private bool isPaused = true;
+    public bool inMenu = true;
 
+
+ 
     void Start()
     {
         Time.timeScale = 1f;  // Resume the game
 
         // Initially, hide all menus
-        HideAllMenu(true);
+        HideAllMenu(inMenu);
 
         // Set button listeners for each action
         buttonContinue.onClick.AddListener(Continue);
-        buttonRestart.onClick.AddListener(Restart);
+        buttonNewGame.onClick.AddListener(NewGame);
+        buttonMainMenu.onClick.AddListener(Mainmenu);
         buttonSettings.onClick.AddListener(OpenSettings);
         buttonExit.onClick.AddListener(ExitGame);
 
     }
+    void Update()
+    {
+    //Optional: Toggle Pause with the Escape key
+     
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPaused = !isPaused;
+                Debug.Log("Escape key pressed");
+                if (isPaused)
+                    Continue();
+                else
+                    Paused();
 
+
+            }
+      
+     
+    }
+    public void Paused()
+    {
+        HideAllMenu(true);
+        Time.timeScale = 0f;  // Pause the game
+    }
+    public void Mainmenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        PlayerData.SavePlayerLevel(EnemySpawner.instance.wave);
+
+    }
 
     // Function to resume the game
     public void Continue()
     {
-        HideAllMenu(false);
-        Time.timeScale = 1f;  // Resume the game
+        if (!inMenu)
+        {
+            HideAllMenu(false);
+            Time.timeScale = 1f;  // Resume the game
+            return;
+        }
+        NewGame();
+        GameMenuManager.Instance.isContinue = true;
+        
     }
-    public void Restart()
+    public void NewGame()
     {
         string sceneName = "AirCarftShooter";
 
@@ -58,6 +101,7 @@ public class MainMenu : MonoBehaviour
             Debug.LogError("Scene '" + sceneName + "' is not added to the Build Settings.");
         }
     }
+
 
     // Function to open the settings menu
     public void OpenSettings()

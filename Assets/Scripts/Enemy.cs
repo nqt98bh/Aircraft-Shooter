@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
             if(enemyHP <= 0)
             {
                 OnDead();
+                SmokeSpawner.Instance.SmokeFXSpawn(gameObject.transform);
                 ScoreManager.Instance.AddScore(100);
 
 
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     public void OnDead()
     {
-        SmokeSpawner.Instance.SmokeFXSpawner();
+        
     }
   
 
