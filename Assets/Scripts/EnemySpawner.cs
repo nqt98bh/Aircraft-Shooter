@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float verticalSpacing = 3f;
     [SerializeField] int numberOfRows = 2;
     [SerializeField] public int wave = 0;
+    public int defaultWave;
     [SerializeField] int[] enemiesPerWave = { 8, 12, 16 };
     private bool isWaveInProgress = false;
     Transform[] path;
@@ -22,10 +23,13 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         instance = this;
+        wave = GameConstact.levelDefault;
         if (GameMenuManager.Instance.isContinue)
         {
-            wave = PlayerData.GetCurrentLevelPlayer()-1;
+            wave = Mathf.Clamp( PlayerData.GetCurrentLevelPlayer()-1,0,3);
+            
         }
+      
         StartCoroutine(SpawnEnemy());
         
         

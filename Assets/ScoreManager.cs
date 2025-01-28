@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
     public int score = 0;
+    public int defaultScore;
     private void Awake()
     {
         if(Instance == null)
@@ -16,6 +17,15 @@ public class ScoreManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+    private void Start()
+    {
+        score = GameConstact.scoreDefault;
+        if (GameMenuManager.Instance.isContinue)
+        {
+            score = PlayerData.GetCurrentPointPlayer();
+        }
+
     }
     private void Update()
     {

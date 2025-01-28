@@ -6,6 +6,7 @@ public class GameMenuManager : MonoBehaviour
 {
    public static GameMenuManager Instance;
     public bool isContinue;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -18,5 +19,5 @@ public class GameMenuManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+   
 }

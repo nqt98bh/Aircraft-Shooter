@@ -71,6 +71,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         PlayerData.SavePlayerLevel(EnemySpawner.instance.wave);
+        PlayerData.SavePlayerPoint(ScoreManager.Instance.score);
 
     }
 
@@ -83,24 +84,32 @@ public class MainMenu : MonoBehaviour
             Time.timeScale = 1f;  // Resume the game
             return;
         }
-        NewGame();
+        LoadScene();
         GameMenuManager.Instance.isContinue = true;
         
     }
     public void NewGame()
     {
+        LoadScene();
+        GameMenuManager.Instance.isContinue = false;
+        PlayerData.SavePlayerLevel(GameConstact.levelDefault);
+        PlayerData.SavePlayerPoint(GameConstact.scoreDefault);
+
+
+    }
+    public void LoadScene()
+    {
         string sceneName = "AirCarftShooter";
+
 
         if (Application.CanStreamedLevelBeLoaded(sceneName))
         {
             SceneManager.LoadScene(sceneName);
             Debug.Log("Restarting Scene: " + sceneName);
-        }
-        else
-        {
-            Debug.LogError("Scene '" + sceneName + "' is not added to the Build Settings.");
+
         }
     }
+
 
 
     // Function to open the settings menu
