@@ -104,6 +104,7 @@ MonoBehaviour:
   enemyHP: 1
   moveSpeed: 2
   animator: {fileID: -947053190133237291}
+  audioSource: {fileID: 0}
 --- !u!61 &-2926598494660956964
 BoxCollider2D:
   m_ObjectHideFlags: 0

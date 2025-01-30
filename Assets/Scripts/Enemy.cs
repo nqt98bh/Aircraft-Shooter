@@ -12,10 +12,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     private Transform[] path;
     public Animator animator;
+    public AudioClip audioClip;
     float time = 0f;
     private void Start()
     {
          animator = GetComponent<Animator>();
+        audioClip = GetComponent<AudioClip>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,11 +29,9 @@ public class Enemy : MonoBehaviour
             enemyHP -= 1;
             if(enemyHP <= 0)
             {
-                OnDead();
+                SoundFX.Instance.PlaySoundFX(SoundType.Explosion);
                 SmokeSpawner.Instance.SmokeFXSpawn(gameObject.transform);
                 ScoreManager.Instance.AddScore(100);
-
-
                 EnemyRecycle();
 
             }
@@ -45,11 +45,9 @@ public class Enemy : MonoBehaviour
 
         animator.SetTrigger("IsHitted");
     }
+    
 
-    public void OnDead()
-    {
-        
-    }
+ 
   
 
 
@@ -61,4 +59,6 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+
 }
