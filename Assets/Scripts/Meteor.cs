@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
 
-    void Update()
-    {
-        
-    }
+   
 
     private void OnTriggerEnter2D(Collider2D other)
     {

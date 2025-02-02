@@ -29,7 +29,7 @@ public class SoundFX : MonoBehaviour
         public SoundType soundtype;
         public AudioClip audioClip;
     }
-
+    
     public void PlaySoundFX(SoundType soundtype) 
     {
         AudioSource audioSource = null;

@@ -40,7 +40,7 @@ public class EnemyBulletSpawner : MonoBehaviour
             {
                 continue;
             }
-            Vector3 position = enemy.transform.position;
+            Vector3 position = enemy.transform.position + new Vector3(0,-1,0);
             GameObject enemyBulletGo = enemyBulletPool.GetObject(position, Quaternion.identity);
             EnemyBullet bullet = enemyBulletGo.GetComponent<EnemyBullet>();
             enemyBulletGo.transform.position = position;

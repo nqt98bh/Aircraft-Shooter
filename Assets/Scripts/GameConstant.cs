@@ -11,6 +11,7 @@ public class GameConstant
     public static string POWERUP_TAG = "PowerUp";
     public static string SPEEDUP_TAG = "SpeedUp";
     public static string HEALTHUP_TAG = "HealthUp";
+    public static string BOSS_TAG = "Boss";
 
 
 }

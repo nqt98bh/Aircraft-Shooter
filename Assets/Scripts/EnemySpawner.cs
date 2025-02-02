@@ -5,15 +5,13 @@ using UnityEngine.UIElements;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static EnemySpawner instance;
+    public static EnemySpawner Instance;
     public PoolManager enemyPool;
     public EnemyBulletSpawner enemyBullet;
     private float timer =0f;
     [SerializeField] private float spawnInterval = 5.0f;
     [SerializeField] private float fireInterval;
-    [SerializeField] float verticalOffset = 4f; // Offset in the vertical direction (Y-axis)
-    [SerializeField] float verticalSpacing = 3f;
-    [SerializeField] int numberOfRows = 2;
+   
     [SerializeField] public int wave = 0;
     public int defaultWave;
     [SerializeField] int[] enemiesPerWave = { 8, 12, 16 };
@@ -22,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        instance = this;
+        Instance = this;
         wave = GameConstact.levelDefault;
         if (GameMenuManager.Instance.isContinue)
         {
@@ -58,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     //wave = enemiesPerWave.Length - 1;
                     BossSpawn();
+                    return;
                 }
                 StartCoroutine(SpawnEnemy());
                 timer =0f;

@@ -10,7 +10,6 @@ public class InfiniteBackGroundController : MonoBehaviour
 
     private Vector3 startPosition;
     private MeshRenderer meshRenderer;
-    private float totalDistanceMoved = 0f;
 
     private void Start()
     {

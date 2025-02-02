@@ -23,7 +23,6 @@ public class ItemProperties
 public class ItemSpawner : MonoBehaviour
 {
     
-    [SerializeField] private float spawnForce = 100f;
     public List<ItemProperties> itemProperties;
     private Dictionary<ItemType, float> timers = new Dictionary<ItemType, float>();
     //private Dictionary<ItemType, ItemEffect> itemEffects = new Dictionary<ItemType, ItemEffect>();

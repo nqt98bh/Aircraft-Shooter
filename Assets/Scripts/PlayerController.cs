@@ -7,7 +7,6 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    [SerializeField] int HP = 5;
     [SerializeField] float speed = 5.0f;
     [SerializeField] int maxHealth = 100;
     public int currentHealth;
@@ -109,9 +108,6 @@ public class PlayerController : MonoBehaviour
             GetHealthUp(20);
         }
     }
-    public void OnParticleTrigger()
-    {
-        
-    }
+   
 }
 

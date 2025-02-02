@@ -9,11 +9,9 @@ public class Enemy : MonoBehaviour
 {
     //[SerializeField] private float speed = 5f;
     [SerializeField] private int enemyHP = 5;
-    [SerializeField] private float moveSpeed = 2f;
     private Transform[] path;
     public Animator animator;
     public AudioClip audioClip;
-    float time = 0f;
     private void Start()
     {
          animator = GetComponent<Animator>();

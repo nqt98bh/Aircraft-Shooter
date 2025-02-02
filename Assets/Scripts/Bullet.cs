@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(GameConstant.ENEMY_TAG) || other.CompareTag(GameConstant.METEOR_TAG) ||
-            other.CompareTag(GameConstant.ROOF_TAG) || other.CompareTag(GameConstant.ENEMY_BULLET_TAG))
+            other.CompareTag(GameConstant.ROOF_TAG) || other.CompareTag(GameConstant.ENEMY_BULLET_TAG)||other.CompareTag(GameConstant.BOSS_TAG))
         {
             RecycleAction?.Invoke();
         }
