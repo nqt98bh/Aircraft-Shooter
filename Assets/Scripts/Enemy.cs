@@ -8,14 +8,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     //[SerializeField] private float speed = 5f;
-    [SerializeField] private int enemyHP = 5;
+    [SerializeField] private int enemyHP = 3;
     private Transform[] path;
     public Animator animator;
-    public AudioClip audioClip;
     private void Start()
     {
          animator = GetComponent<Animator>();
-        audioClip = GetComponent<AudioClip>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,20 +21,17 @@ public class Enemy : MonoBehaviour
         
         if (other.CompareTag(GameConstant.BULLET_TAG))
         {
-            IsHitted();
             enemyHP -= 1;
+
+            IsHitted();
             if(enemyHP <= 0)
             {
                 SoundFX.Instance.PlaySoundFX(SoundType.Explosion);
                 SmokeSpawner.Instance.SmokeFXSpawn(gameObject.transform);
                 ScoreManager.Instance.AddScore(100);
                 EnemyRecycle();
-
             }
-
-
         }
-       
     }
     public void IsHitted()
     {
@@ -44,11 +39,6 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("IsHitted");
     }
     
-
- 
-  
-
-
     public void EnemyInit(Vector3 direction)
     {
         gameObject.SetActive(true);
@@ -56,6 +46,7 @@ public class Enemy : MonoBehaviour
     public void EnemyRecycle()
     {
         gameObject.SetActive(false);
+        enemyHP = 3;
     }
 
 

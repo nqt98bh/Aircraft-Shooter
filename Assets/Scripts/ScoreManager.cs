@@ -6,7 +6,10 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
+    public GameObject gameScore;
     public TextMeshProUGUI scoreText;
+    public GameObject gameOver;
+    public TextMeshProUGUI gameOverText;
 
     public int score = 0;
     public int defaultScore;
@@ -29,17 +32,21 @@ public class ScoreManager : MonoBehaviour
     }
     private void Update()
     {
-        scoreText.text =  $"Score:{score} \n Level:{EnemySpawner.Instance.wave+1}";
-        if(BossScript.bossHP <= 0)
+        if (!GameController.Instance.IsGameOver)
         {
-            scoreText.text = $"<color=green>CONGRATULATION!! \nYou are killed the Boss!!";
-
-            return;
+            scoreText.text = $"Score:{score} \n Level:{EnemySpawner.Instance.wave + 1}";
         }
+       
     }
 
     public void AddScore(int amount)
     {
         score += amount;
+    }
+    public void GameFinised()
+    {
+        Time.timeScale = 0f;
+        gameOver.SetActive(true);
+        gameOverText.text = $"<color=green>CONGRATULATION!! \nYou are killed the Boss!!";
     }
 }

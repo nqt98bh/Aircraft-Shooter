@@ -102,6 +102,7 @@ public class BulletSpawner : MonoBehaviour
             Recycle(bulletGo);
         });
         bullet.Fire(direction);
+        SoundFX.Instance.PlaySoundFX(SoundType.PlayerFire);
 
 
     }

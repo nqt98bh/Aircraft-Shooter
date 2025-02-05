@@ -34,7 +34,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     }
     public void EnemyFire()
     {
-        foreach (GameObject enemy in GameController.instance.EnemySpawner.enemyPool.GetPoolList())
+        foreach (GameObject enemy in GameController.Instance.EnemySpawner.enemyPool.GetPoolList())
         {
             if(enemy.activeInHierarchy == false)
             {

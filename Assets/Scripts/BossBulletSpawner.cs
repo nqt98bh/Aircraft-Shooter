@@ -28,11 +28,11 @@ public class BossBulletSpawner : MonoBehaviour
     {
         if (EnemySpawner.Instance.wave == 3)
         {
-            if (BossScript.bossHP > 700 || BossScript.bossHP <= 1000)
+            if (BossScript.instance.bossHP > 700 || BossScript.instance.bossHP <= 1000)
             {
                 Level1();
             }
-            else if (BossScript.bossHP > 300 || BossScript.bossHP <= 7000)
+            else if (BossScript.instance.bossHP > 300 || BossScript.instance.bossHP <= 7000)
             {
                 Level2();
             }
@@ -59,9 +59,9 @@ public class BossBulletSpawner : MonoBehaviour
         float angleDegrees = 75;
         float angleRadians = angleDegrees * Mathf.Deg2Rad;
 
-        Vector3 direction1 = Vector3.up;
-        Vector3 direction2 = new Vector3(Mathf.Cos(angleRadians), Mathf.Sin(angleRadians)).normalized;
-        Vector3 direction3 = new Vector3(-Mathf.Cos(angleRadians), Mathf.Sin(angleRadians)).normalized;
+        Vector3 direction1 = Vector3.down;
+        Vector3 direction2 = new Vector3(Mathf.Cos(angleRadians), -Mathf.Sin(angleRadians)).normalized;
+        Vector3 direction3 = new Vector3(-Mathf.Cos(angleRadians), -Mathf.Sin(angleRadians)).normalized;
 
         Vector3 Position1 = motherShip.position + direction1;
         Vector3 Position2 = Ship1.position + direction2;

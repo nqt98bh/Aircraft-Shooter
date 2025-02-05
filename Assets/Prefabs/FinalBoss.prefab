@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: -319294445726118430}
   - component: {fileID: 1221463263634197246}
   - component: {fileID: 8849071169798372749}
+  - component: {fileID: 4900429506844138533}
   m_Layer: 0
   m_Name: FinalBoss
   m_TagString: Boss
@@ -292,6 +293,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d449bdc011e034e9f8a5ec30f67ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossHP: 3000
+--- !u!95 &4900429506844138533
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296120307565996050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b07f4c0e1af1964281bd8143b6063ca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5535437317463875407
 GameObject:
   m_ObjectHideFlags: 0

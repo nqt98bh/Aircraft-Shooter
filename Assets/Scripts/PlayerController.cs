@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
             TakeDamage(20);
             if (currentHealth <= 0)
             {
+                GameController.Instance.IsGameOver = true;
                 Destroy(gameObject);
                 Debug.Log("Your are dead");
             }
@@ -99,8 +100,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag(GameConstant.SPEEDUP_TAG))
         {
-            GameController.instance.BulletSpawner.BulletSpeedUp(1);
-            GameController.instance.BulletSpawner.BulletFireUp(0.15f);
+            GameController.Instance.BulletSpawner.BulletSpeedUp(1);
+            GameController.Instance.BulletSpawner.BulletFireUp(0.15f);
 
         }
         else if (other.CompareTag(GameConstant.HEALTHUP_TAG))

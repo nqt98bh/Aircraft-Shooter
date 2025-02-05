@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
         if (gameObject.activeInHierarchy)
         {
-            transform.Translate(direction * GameController.instance.BulletSpawner.speed * Time.deltaTime);
+            transform.Translate(direction * GameController.Instance.BulletSpawner.speed * Time.deltaTime);
         }
     }
 
@@ -28,11 +28,11 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void BulletFireAudio()
-    {
-        AudioSource bulletAudio = gameObject.GetComponent<AudioSource>();
-        bulletAudio.Play();
-    }
+    //public void BulletFireAudio()
+    //{
+    //    AudioSource bulletAudio = gameObject.GetComponent<AudioSource>();
+    //    bulletAudio.Play();
+    //}
 
   
 
@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
     public void Init(Action _recycleAction)
     {
         RecycleAction = _recycleAction;
-        BulletFireAudio();
+        //BulletFireAudio();
         
       
     }

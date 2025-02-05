@@ -25,7 +25,7 @@ public class ItemSpawner : MonoBehaviour
     
     public List<ItemProperties> itemProperties;
     private Dictionary<ItemType, float> timers = new Dictionary<ItemType, float>();
-    //private Dictionary<ItemType, ItemEffect> itemEffects = new Dictionary<ItemType, ItemEffect>();
+    
 
     private void Start()
     {

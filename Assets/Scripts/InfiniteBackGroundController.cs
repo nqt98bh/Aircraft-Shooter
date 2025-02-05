@@ -13,6 +13,7 @@ public class InfiniteBackGroundController : MonoBehaviour
 
     private void Start()
     {
+        BackgroundMusicState();
         startPosition = transform.position;
         meshRenderer = GetComponent<MeshRenderer>();
     }
@@ -29,6 +30,7 @@ public class InfiniteBackGroundController : MonoBehaviour
             }
             go.transform.Translate(Vector3.down * scrollSpeed *Time.deltaTime);
         }
+        
 
        
     }
@@ -45,4 +47,8 @@ public class InfiniteBackGroundController : MonoBehaviour
         return hightest;
     }
     
+    public static void BackgroundMusicState()
+    {
+        SoundFX.Instance.PlayBackgroundMusic();
+    }
 }

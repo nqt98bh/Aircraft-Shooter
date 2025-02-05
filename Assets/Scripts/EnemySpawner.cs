@@ -25,12 +25,8 @@ public class EnemySpawner : MonoBehaviour
         if (GameMenuManager.Instance.isContinue)
         {
             wave = Mathf.Clamp( PlayerData.GetCurrentLevelPlayer()-1,0,3);
-            
         }
-      
         StartCoroutine(SpawnEnemy());
-        
-        
     }
     private void Update()
     {
@@ -39,7 +35,6 @@ public class EnemySpawner : MonoBehaviour
           isWaveInProgress = true;
           SpawnNextWave();
         }
-
     }
 
     private void SpawnNextWave()
@@ -62,10 +57,7 @@ public class EnemySpawner : MonoBehaviour
                 timer =0f;
             }
         }
-
-
         isWaveInProgress =false;
-      
     }
 
     public IEnumerator SpawnEnemy()
@@ -81,8 +73,6 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemyAtPosition(spawnPosition);
             yield return new WaitForSeconds(0.5f);
         }
-
-
     }
     
     public void BossSpawn()
@@ -101,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool CheckIfWaveCompleted()
     {
-        foreach (GameObject enemy in GameController.instance.EnemySpawner.enemyPool.GetPoolList())
+        foreach (GameObject enemy in GameController.Instance.EnemySpawner.enemyPool.GetPoolList())
         {
            if(enemy.activeInHierarchy)
             {
